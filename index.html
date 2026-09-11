@@ -1,1210 +1,3937 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <meta
-        name="description"
-        content="Augusta Tattoo & Piercing em São Paulo. Tatuagem, piercing, projetos personalizados, fine line, realismo e atendimento com hora marcada na Consolação."
-    >
+  <meta
+    name="description"
+    content="Augusta Tattoo & Piercing em São Paulo. Tatuagem, body piercing, fine line, realismo, cover-up e projetos personalizados na Consolação."
+  >
 
-    <meta name="theme-color" content="#090909">
+  <meta name="theme-color" content="#070707">
 
-    <title>Augusta Tattoo & Piercing | São Paulo</title>
+  <title>Augusta Tattoo & Piercing | São Paulo</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- FONTES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
-        rel="stylesheet"
-    >
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
-    <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* =========================================================
+       VARIÁVEIS
+    ========================================================= */
+
+    :root {
+      --bg: #070707;
+      --bg-soft: #0d0d0e;
+      --bg-card: #141415;
+      --bg-card-hover: #191919;
+
+      --text: #f4efe8;
+      --text-soft: #aaa59f;
+      --text-muted: #74716d;
+
+      --gold: #c9a15b;
+      --gold-light: #e3bd75;
+      --gold-dark: #8e692e;
+
+      --whatsapp: #25d366;
+
+      --border: rgba(255, 255, 255, 0.09);
+      --border-gold: rgba(201, 161, 91, 0.3);
+
+      --container: 1180px;
+
+      --font-body: "Inter", Arial, sans-serif;
+      --font-title: "Playfair Display", Georgia, serif;
+
+      --radius: 20px;
+      --radius-sm: 12px;
+
+      --transition: 0.3s ease;
+    }
+
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: #080808;
+    }
+
+
+    /* =========================================================
+       UTILITÁRIOS
+    ========================================================= */
+
+    .container {
+      width: min(calc(100% - 40px), var(--container));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 110px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 20px;
+
+      color: var(--gold-light);
+
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 55px;
+    }
+
+    .section-heading.centered {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .section-heading.centered .eyebrow::before {
+      display: none;
+    }
+
+    .section-heading h2,
+    .contact-content h2,
+    .final-cta h2 {
+      margin-bottom: 20px;
+
+      font-family: var(--font-title);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.08;
+    }
+
+    .section-heading h2 span,
+    .contact-content h2 span,
+    .final-cta h2 span {
+      color: var(--gold);
+    }
+
+    .section-heading p {
+      color: var(--text-soft);
+      font-size: 1.05rem;
+    }
+
+
+    /* =========================================================
+       BOTÕES
+    ========================================================= */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 52px;
+      padding: 14px 24px;
+
+      border: 1px solid transparent;
+      border-radius: 5px;
+
+      font-size: 0.9rem;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition:
+        transform var(--transition),
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #080808;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .btn-light {
+      background: #f2ede5;
+      color: #111;
+    }
+
+    .btn-light:hover {
+      background: #fff;
+    }
+
+    .btn-nav {
+      min-height: 42px;
+      padding: 10px 18px;
+
+      background: var(--gold);
+      color: #080808;
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      z-index: 1000;
+
+      width: 100%;
+
+      border-bottom: 1px solid transparent;
+
+      transition:
+        background var(--transition),
+        border-color var(--transition),
+        backdrop-filter var(--transition);
+    }
+
+    .header.scrolled {
+      background: rgba(7, 7, 7, 0.92);
+      border-color: var(--border);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-container {
+      min-height: 78px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-symbol {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+
+      color: var(--gold);
+
+      font-family: var(--font-title);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.05;
+    }
+
+    .logo-text strong {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+    }
+
+    .logo-text small {
+      margin-top: 5px;
+
+      color: var(--text-soft);
+
+      font-size: 0.6rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-link {
+      position: relative;
+
+      color: #dedad4;
+
+      font-size: 0.78rem;
+      font-weight: 600;
+
+      transition: color var(--transition);
+    }
+
+    .nav-link::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+
+      width: 0;
+      height: 1px;
+
+      background: var(--gold);
+
+      transition: width var(--transition);
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--gold-light);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+
+      width: 42px;
+      height: 42px;
+
+      border: 0;
+      background: transparent;
+
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+
+      width: 25px;
+      height: 2px;
+      margin: 6px auto;
+
+      background: #fff;
+
+      transition: var(--transition);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      min-height: 100svh;
+
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+
+      background:
+        url("hero-studio.jpg")
+        center 35% / cover no-repeat;
+
+      transform: scale(1.015);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(4, 4, 4, 0.97) 0%,
+          rgba(4, 4, 4, 0.86) 42%,
+          rgba(4, 4, 4, 0.25) 80%
+        ),
+        linear-gradient(
+          0deg,
+          #080808 0%,
+          transparent 28%
+        );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+
+      padding-top: 120px;
+      padding-bottom: 70px;
+    }
+
+    .hero-copy {
+      max-width: 780px;
+    }
+
+    .hero h1 {
+      max-width: 790px;
+      margin-bottom: 26px;
+
+      font-family: var(--font-title);
+
+      font-size: clamp(3rem, 7vw, 6.2rem);
+      line-height: 0.98;
+
+      letter-spacing: -0.045em;
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--gold);
+    }
+
+    .hero-copy > p {
+      max-width: 650px;
+      margin-bottom: 34px;
+
+      color: #c5c0ba;
+
+      font-size: clamp(1rem, 2vw, 1.18rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-trust {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      max-width: 760px;
+      margin-top: 55px;
+      padding-top: 25px;
+
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .hero-trust div {
+      padding-right: 20px;
+    }
+
+    .hero-trust div + div {
+      padding-left: 20px;
+      border-left: 1px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .hero-trust strong,
+    .hero-trust span {
+      display: block;
+    }
+
+    .hero-trust strong {
+      margin-bottom: 4px;
+      font-size: 0.84rem;
+    }
+
+    .hero-trust span {
+      color: #96918b;
+      font-size: 0.76rem;
+    }
+
+    .scroll-down {
+      position: absolute;
+      right: 45px;
+      bottom: 40px;
+
+      z-index: 3;
+
+      width: 44px;
+      height: 66px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 30px;
+    }
+
+    .scroll-down span {
+      width: 4px;
+      height: 8px;
+
+      border-radius: 4px;
+
+      background: var(--gold);
+
+      animation: scrollIndicator 1.8s infinite;
+    }
+
+    @keyframes scrollIndicator {
+      0% {
+        transform: translateY(-8px);
+        opacity: 0;
+      }
+
+      40% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(10px);
+        opacity: 0;
+      }
+    }
+
+
+    /* =========================================================
+       SOBRE
+    ========================================================= */
+
+    .about {
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(201, 161, 91, 0.07),
+          transparent 35%
+        ),
+        var(--bg);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+
+      gap: 70px;
+    }
+
+    .about-image {
+      position: relative;
+
+      min-height: 600px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .about-image::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.58),
+          transparent 45%
+        );
+
+      pointer-events: none;
+    }
+
+    .about-image img {
+      height: 100%;
+      min-height: 600px;
+
+      object-fit: cover;
+    }
+
+    .image-label {
+      position: absolute;
+      left: 25px;
+      bottom: 25px;
+
+      z-index: 2;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      padding: 12px 16px;
+
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50px;
+
+      background: rgba(0, 0, 0, 0.66);
+
+      font-size: 0.8rem;
+
+      backdrop-filter: blur(8px);
+    }
+
+    .mini-title {
+      display: block;
+
+      margin-bottom: 14px;
+
+      color: var(--gold);
+
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .about-content h3 {
+      margin-bottom: 25px;
+
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    .about-content > p {
+      margin-bottom: 18px;
+      color: var(--text-soft);
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 18px;
+
+      margin-top: 35px;
+    }
+
+    .feature {
+      display: flex;
+      gap: 18px;
+
+      padding-top: 18px;
+
+      border-top: 1px solid var(--border);
+    }
+
+    .feature-icon {
+      flex: 0 0 42px;
+
+      color: var(--gold);
+      font-family: var(--font-title);
+    }
+
+    .feature strong,
+    .feature span {
+      display: block;
+    }
+
+    .feature strong {
+      margin-bottom: 4px;
+    }
+
+    .feature span {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+
+
+    /* =========================================================
+       EQUIPE
+    ========================================================= */
+
+    .team-section {
+      background: #0b0b0c;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 25px;
+    }
+
+    .team-card {
+      display: grid;
+      grid-template-columns: minmax(190px, 0.75fr) 1.25fr;
+
+      min-height: 430px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      background: var(--bg-card);
+
+      transition:
+        transform var(--transition),
+        border-color var(--transition);
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-gold);
+    }
+
+    .team-image {
+      min-height: 430px;
+    }
+
+    .team-image img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .team-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding: 40px;
+    }
+
+    .team-role {
+      margin-bottom: 12px;
+
+      color: var(--gold);
+
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .team-content h3 {
+      margin-bottom: 18px;
+
+      font-family: var(--font-title);
+      font-size: 2.1rem;
+    }
+
+    .team-content p {
+      margin-bottom: 25px;
+      color: var(--text-soft);
+    }
+
+    .text-link {
+      color: var(--gold-light);
+
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+
+    /* =========================================================
+       SERVIÇOS
+    ========================================================= */
+
+    .services {
+      background: var(--bg);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 20px;
+    }
+
+    .service-card {
+      position: relative;
+
+      padding: 38px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      background: var(--bg-card);
+
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+
+      border-color: var(--border-gold);
+      background: var(--bg-card-hover);
+    }
+
+    .service-card.featured {
+      border-color: rgba(201, 161, 91, 0.34);
+
+      background:
+        linear-gradient(
+          160deg,
+          rgba(201, 161, 91, 0.1),
+          transparent 35%
+        ),
+        var(--bg-card);
+    }
+
+    .service-number {
+      position: absolute;
+      top: 26px;
+      right: 30px;
+
+      color: #414141;
+
+      font-family: var(--font-title);
+      font-size: 2rem;
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+
+      display: grid;
+      place-items: center;
+
+      margin-bottom: 30px;
+
+      border: 1px solid var(--border-gold);
+      border-radius: 50%;
+
+      color: var(--gold);
+
+      font-size: 1.5rem;
+    }
+
+    .service-badge {
+      position: absolute;
+      top: 0;
+      left: 35px;
+
+      padding: 6px 14px;
+
+      background: var(--gold);
+      color: #090909;
+
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .service-card h3 {
+      margin-bottom: 16px;
+
+      font-family: var(--font-title);
+      font-size: 1.65rem;
+    }
+
+    .service-card p {
+      min-height: 100px;
+      margin-bottom: 24px;
+
+      color: var(--text-soft);
+    }
+
+    .service-card ul {
+      display: grid;
+      gap: 9px;
+
+      margin-bottom: 30px;
+    }
+
+    .service-card li {
+      position: relative;
+
+      padding-left: 18px;
+
+      color: #c5c0ba;
+
+      font-size: 0.87rem;
+    }
+
+    .service-card li::before {
+      content: "";
+
+      position: absolute;
+      top: 10px;
+      left: 0;
+
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background: var(--gold);
+    }
+
+    .service-card a {
+      color: var(--gold-light);
+
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .cta-strip {
+      padding: 62px 0;
+
+      background:
+        linear-gradient(
+          120deg,
+          #9d762f,
+          #caa35b 50%,
+          #8b682d
+        );
+
+      color: #0a0a0a;
+    }
+
+    .cta-strip-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 30px;
+    }
+
+    .cta-strip .eyebrow {
+      color: #261b0b;
+    }
+
+    .cta-strip .eyebrow::before {
+      background: #261b0b;
+    }
+
+    .cta-strip h2 {
+      max-width: 700px;
+
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.05;
+    }
+
+
+    /* =========================================================
+       GALERIA
+    ========================================================= */
+
+    .gallery-section {
+      background: #090909;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 270px;
+
+      gap: 10px;
+    }
+
+    .gallery-item {
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: 8px;
+
+      background: #151515;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      filter: saturate(0.88) contrast(1.05);
+
+      transition:
+        transform 0.55s ease,
+        filter 0.55s ease;
+    }
+
+    .gallery-item::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.78),
+          transparent 60%
+        );
+
+      opacity: 0.6;
+
+      transition: opacity var(--transition);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: saturate(1) contrast(1.02);
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-item figcaption {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+
+      z-index: 3;
+
+      transform: translateY(7px);
+
+      opacity: 0;
+
+      font-size: 0.85rem;
+      font-weight: 600;
+
+      transition:
+        opacity var(--transition),
+        transform var(--transition);
+    }
+
+    .gallery-item:hover figcaption {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .gallery-item figcaption span {
+      display: block;
+
+      margin-bottom: 3px;
+
+      color: var(--gold-light);
+
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .gallery-large {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-tall {
+      grid-row: span 2;
+    }
+
+    .gallery-wide {
+      grid-column: span 2;
+    }
+
+    .gallery-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 25px;
+
+      margin-top: 35px;
+
+      color: var(--text-soft);
+    }
+
+
+    /* =========================================================
+       CUIDADOS
+    ========================================================= */
+
+    .care-section {
+      background:
+        radial-gradient(
+          circle at 10% 50%,
+          rgba(201, 161, 91, 0.08),
+          transparent 32%
+        ),
+        #0d0d0e;
+    }
+
+    .care-wrapper {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+
+      gap: 80px;
+    }
+
+    .care-wrapper .section-heading {
+      margin-bottom: 0;
+    }
+
+    .care-box {
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      background: var(--bg-card);
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-button {
+      padding: 20px;
+
+      border: 0;
+      background: transparent;
+
+      color: var(--text-soft);
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      transition:
+        background var(--transition),
+        color var(--transition);
+    }
+
+    .tab-button.active {
+      background: rgba(201, 161, 91, 0.09);
+      color: var(--gold-light);
+    }
+
+    .tab-content {
+      display: none;
+
+      padding: 15px 32px 28px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .care-item {
+      display: flex;
+      gap: 20px;
+
+      padding: 22px 0;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .care-item:last-child {
+      border-bottom: 0;
+    }
+
+    .care-item > span {
+      flex: 0 0 34px;
+
+      color: var(--gold);
+
+      font-family: var(--font-title);
+    }
+
+    .care-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .care-item p {
+      color: var(--text-soft);
+      font-size: 0.88rem;
+    }
+
+
+    /* =========================================================
+       DEPOIMENTOS
+    ========================================================= */
+
+    .testimonials {
+      background: var(--bg);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 18px;
+    }
+
+    .testimonial-card {
+      padding: 35px;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      background: var(--bg-card);
+    }
+
+    .featured-review {
+      border-color: var(--border-gold);
+
+      background:
+        linear-gradient(
+          150deg,
+          rgba(201, 161, 91, 0.1),
+          transparent 40%
+        ),
+        var(--bg-card);
+    }
+
+    .stars {
+      margin-bottom: 22px;
+
+      color: var(--gold);
+
+      letter-spacing: 0.13em;
+    }
+
+    .testimonial-card p {
+      margin-bottom: 25px;
+
+      color: #d0ccc6;
+
+      font-family: var(--font-title);
+      font-size: 1.08rem;
+      line-height: 1.65;
+    }
+
+    .testimonial-card > span {
+      color: var(--text-muted);
+      font-size: 0.76rem;
+    }
+
+
+    /* =========================================================
+       CONTATO
+    ========================================================= */
+
+    .contact-section {
+      background: #0d0d0e;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+
+      gap: 55px;
+    }
+
+    .contact-content {
+      padding: 35px 0;
+    }
+
+    .contact-content > p {
+      max-width: 620px;
+      color: var(--text-soft);
+    }
+
+    .contact-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 12px;
+
+      margin: 40px 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+
+      padding: 18px;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+
+      background: rgba(255, 255, 255, 0.025);
+
+      transition:
+        border-color var(--transition),
+        background var(--transition);
+    }
+
+    a.contact-item:hover {
+      border-color: var(--border-gold);
+      background: rgba(201, 161, 91, 0.04);
+    }
+
+    .contact-icon {
+      flex: 0 0 38px;
+
+      width: 38px;
+      height: 38px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--border-gold);
+      border-radius: 50%;
+
+      color: var(--gold);
+    }
+
+    .contact-item small,
+    .contact-item strong,
+    .contact-item .small-note {
+      display: block;
+    }
+
+    .contact-item small {
+      margin-bottom: 4px;
+
+      color: var(--text-muted);
+
+      font-size: 0.67rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contact-item strong {
+      font-size: 0.85rem;
+    }
+
+    .small-note {
+      margin-top: 4px;
+
+      color: var(--text-muted);
+      font-size: 0.72rem;
+    }
+
+    .contact-image {
+      position: relative;
+
+      min-height: 680px;
+
+      overflow: hidden;
+
+      border-radius: var(--radius);
+    }
+
+    .contact-image > img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+
+    .contact-image::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.85),
+          transparent 60%
+        );
+    }
+
+    .location-card {
+      position: absolute;
+      right: 25px;
+      bottom: 25px;
+      left: 25px;
+
+      z-index: 2;
+
+      padding: 25px;
+
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+
+      background: rgba(10, 10, 10, 0.83);
+
+      backdrop-filter: blur(12px);
+    }
+
+    .location-card > span {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: var(--gold);
+
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .location-card strong {
+      display: block;
+
+      margin-bottom: 8px;
+
+      font-family: var(--font-title);
+      font-size: 1.4rem;
+    }
+
+    .location-card p {
+      margin-bottom: 15px;
+
+      color: var(--text-soft);
+
+      font-size: 0.86rem;
+    }
+
+    .location-card a {
+      color: var(--gold-light);
+
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+
+    /* =========================================================
+       CTA FINAL
+    ========================================================= */
+
+    .final-cta {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      min-height: 560px;
+
+      background:
+        url("atendimento-01.jpg")
+        center 45% / cover no-repeat;
+
+      text-align: center;
+    }
+
+    .final-cta-overlay {
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          rgba(4, 4, 4, 0.8),
+          rgba(4, 4, 4, 0.9)
+        );
+    }
+
+    .final-cta-content {
+      position: relative;
+      z-index: 2;
+
+      max-width: 750px;
+    }
+
+    .final-cta .eyebrow::before {
+      display: none;
+    }
+
+    .final-cta p {
+      max-width: 550px;
+      margin: 0 auto 30px;
+
+      color: var(--text-soft);
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    .footer {
+      padding: 75px 0 25px;
+
+      border-top: 1px solid var(--border);
+
+      background: #050505;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.7fr 1fr 0.8fr;
+
+      gap: 45px;
+    }
+
+    .footer-brand p {
+      max-width: 300px;
+      margin-top: 20px;
+
+      color: var(--text-muted);
+
+      font-size: 0.85rem;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      gap: 11px;
+    }
+
+    .footer-column strong {
+      margin-bottom: 7px;
+
+      color: var(--gold-light);
+
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-column a,
+    .footer-column span {
+      color: var(--text-muted);
+
+      font-size: 0.82rem;
+
+      transition: color var(--transition);
+    }
+
+    .footer-column a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+
+      gap: 30px;
+
+      margin-top: 55px;
+      padding-top: 22px;
+
+      border-top: 1px solid var(--border);
+
+      color: #555;
+
+      font-size: 0.72rem;
+    }
+
+    .footer-bottom .legal {
+      max-width: 560px;
+      text-align: right;
+    }
+
+
+    /* =========================================================
+       WHATSAPP
+    ========================================================= */
+
+    .whatsapp-float {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+
+      z-index: 900;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      padding: 12px 17px;
+
+      border-radius: 50px;
+
+      background: var(--whatsapp);
+      color: #071f0f;
+
+      box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.36),
+        0 0 0 0 rgba(37, 211, 102, 0.4);
+
+      font-size: 0.82rem;
+      font-weight: 800;
+
+      animation: whatsappPulse 2.4s infinite;
+
+      transition: transform var(--transition);
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .whatsapp-float svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    @keyframes whatsappPulse {
+      0% {
+        box-shadow:
+          0 14px 40px rgba(0, 0, 0, 0.36),
+          0 0 0 0 rgba(37, 211, 102, 0.34);
+      }
+
+      70% {
+        box-shadow:
+          0 14px 40px rgba(0, 0, 0, 0.36),
+          0 0 0 13px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        box-shadow:
+          0 14px 40px rgba(0, 0, 0, 0.36),
+          0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1050px) {
+
+      .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+
+        width: min(88%, 420px);
+        height: 100svh;
+
+        padding: 90px 30px 40px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 25px;
+
+        border-left: 1px solid var(--border);
+
+        background: rgba(8, 8, 8, 0.98);
+
+        transition: right 0.35s ease;
+
+        backdrop-filter: blur(20px);
+      }
+
+      .nav.open {
+        right: 0;
+      }
+
+      .nav-link {
+        font-size: 1rem;
+      }
+
+      .menu-toggle {
+        position: relative;
+        z-index: 1001;
+
+        display: block;
+      }
+
+      .menu-toggle.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+
+      .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+      }
+
+      .about-grid,
+      .care-wrapper,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        gap: 45px;
+      }
+
+      .team-card {
+        grid-template-columns: 1fr;
+      }
+
+      .team-image {
+        min-height: 0;
+        height: 360px;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .services-grid .service-card:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-image {
+        min-height: 520px;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 720px) {
+
+      .container {
+        width: min(calc(100% - 30px), var(--container));
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .nav-container {
+        min-height: 68px;
+      }
+
+      .logo-symbol {
+        width: 37px;
+        height: 37px;
+
+        font-size: 1.25rem;
+      }
+
+      .logo-text strong {
+        font-size: 1rem;
+      }
+
+      .hero {
+        min-height: 92svh;
+      }
+
+      .hero-bg {
+        background-position: 65% center;
+      }
+
+      .hero-overlay {
+        background:
+          linear-gradient(
+            rgba(5, 5, 5, 0.55),
+            rgba(5, 5, 5, 0.94) 74%,
+            #080808 100%
+          );
+      }
+
+      .hero-content {
+        min-height: 92svh;
+
+        display: flex;
+        align-items: flex-end;
+
+        padding-top: 130px;
+        padding-bottom: 55px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.85rem, 15vw, 4.5rem);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-trust {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+        margin-top: 38px;
+      }
+
+      .hero-trust div {
+        padding: 0;
+      }
+
+      .hero-trust div + div {
+        padding: 15px 0 0;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: 0;
+      }
+
+      .scroll-down {
+        display: none;
+      }
+
+      .about-image,
+      .about-image img {
+        min-height: 460px;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-content {
+        padding: 30px 25px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid .service-card:last-child {
+        grid-column: auto;
+      }
+
+      .service-card p {
+        min-height: auto;
+      }
+
+      .cta-strip-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 260px;
+      }
+
+      .gallery-large {
+        grid-column: span 2;
+        grid-row: span 2;
+      }
+
+      .gallery-wide {
+        grid-column: span 2;
+      }
+
+      .gallery-tall {
+        grid-row: span 2;
+      }
+
+      .gallery-item figcaption {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .gallery-cta {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .care-wrapper {
+        gap: 40px;
+      }
+
+      .tab-content {
+        padding-inline: 20px;
+      }
+
+      .contact-list {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-image {
+        min-height: 470px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      .footer-bottom .legal {
+        text-align: left;
+      }
+
+      .whatsapp-float span {
+        display: none;
+      }
+
+      .whatsapp-float {
+        right: 16px;
+        bottom: 16px;
+
+        width: 56px;
+        height: 56px;
+
+        padding: 0;
+
+        justify-content: center;
+
+        border-radius: 50%;
+      }
+
+    }
+
+
+    @media (max-width: 480px) {
+
+      .section-heading {
+        margin-bottom: 38px;
+      }
+
+      .hero h1 {
+        letter-spacing: -0.055em;
+      }
+
+      .gallery-grid {
+        grid-auto-rows: 220px;
+      }
+
+      .gallery-large {
+        grid-row: span 2;
+      }
+
+      .service-card {
+        padding: 30px 24px;
+      }
+
+      .testimonial-card {
+        padding: 28px 24px;
+      }
+
+      .tabs {
+        grid-template-columns: 1fr;
+      }
+
+      .tab-button + .tab-button {
+        border-top: 1px solid var(--border);
+      }
+
+      .location-card {
+        right: 15px;
+        left: 15px;
+        bottom: 15px;
+      }
+
+    }
+
+
+    /* =========================================================
+       ACESSIBILIDADE
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+      }
+
+    }
+
+  </style>
 </head>
+
 
 <body>
 
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
+  <header class="header" id="header">
+
+    <div class="container nav-container">
+
+      <a href="#inicio" class="logo">
+
+        <span class="logo-symbol">
+          A
+        </span>
+
+        <span class="logo-text">
+          <strong>Augusta</strong>
+          <small>Tattoo & Piercing</small>
+        </span>
+
+      </a>
+
+
+      <nav class="nav" id="nav">
+
+        <a href="#inicio" class="nav-link">
+          Início
+        </a>
+
+        <a href="#sobre" class="nav-link">
+          Sobre
+        </a>
+
+        <a href="#equipe" class="nav-link">
+          Equipe
+        </a>
+
+        <a href="#servicos" class="nav-link">
+          Serviços
+        </a>
+
+        <a href="#galeria" class="nav-link">
+          Galeria
+        </a>
+
+        <a href="#cuidados" class="nav-link">
+          Cuidados
+        </a>
+
+        <a href="#depoimentos" class="nav-link">
+          Avaliações
+        </a>
+
+        <a href="#contato" class="nav-link">
+          Contato
+        </a>
+
+
+        <a
+          href="https://wa.me/5511976892133?text=Olá!%20Vim%20pelo%20site%20da%20Augusta%20Tattoo%20e%20gostaria%20de%20agendar%20um%20horário."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-nav"
+        >
+          Agendar horário
+        </a>
+
+      </nav>
+
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <main>
+
+
     <!-- =====================================================
-         HEADER
+         HERO
     ====================================================== -->
-    <header class="header" id="header">
-        <div class="container nav-container">
 
-            <a href="#inicio" class="logo" aria-label="Augusta Tattoo & Piercing">
-                <span class="logo-symbol">A</span>
+    <section class="hero" id="inicio">
 
-                <span class="logo-text">
-                    <strong>Augusta</strong>
-                    <small>Tattoo & Piercing</small>
-                </span>
-            </a>
+      <div class="hero-bg"></div>
 
-            <nav class="nav" id="nav" aria-label="Navegação principal">
-                <a href="#inicio" class="nav-link">Início</a>
-                <a href="#sobre" class="nav-link">Sobre</a>
-                <a href="#servicos" class="nav-link">Serviços</a>
-                <a href="#galeria" class="nav-link">Galeria</a>
-                <a href="#cuidados" class="nav-link">Cuidados</a>
-                <a href="#depoimentos" class="nav-link">Avaliações</a>
-                <a href="#contato" class="nav-link">Contato</a>
+      <div class="hero-overlay"></div>
 
-                <a
-                    href="https://wa.me/5511976892133?text=Olá!%20Conheci%20o%20Augusta%20Tattoo%20pelo%20site%20e%20gostaria%20de%20agendar%20um%20horário."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-nav"
-                >
-                    Agendar horário
-                </a>
-            </nav>
 
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                type="button"
-                aria-label="Abrir menu"
-                aria-expanded="false"
-                aria-controls="nav"
+      <div class="container hero-content">
+
+        <div class="hero-copy">
+
+          <span class="eyebrow">
+            Tattoo & Piercing • Consolação • São Paulo
+          </span>
+
+
+          <h1>
+            Sua arte gravada na pele
+            <span>
+              com estilo, técnica e cuidado.
+            </span>
+          </h1>
+
+
+          <p>
+            Tatuagens personalizadas e body piercing em um espaço
+            acolhedor, com atendimento individualizado e fácil acesso
+            pela Rua Augusta, Shopping Frei Caneca e Avenida Paulista.
+          </p>
+
+
+          <div class="hero-actions">
+
+            <a
+              href="https://wa.me/5511976892133?text=Olá!%20Gostaria%20de%20pedir%20um%20orçamento%20para%20tattoo%20ou%20piercing."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
             >
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-        </div>
-    </header>
-
-
-    <main>
-
-        <!-- =====================================================
-             HERO
-        ====================================================== -->
-        <section class="hero" id="inicio">
-
-            <div class="hero-bg" aria-hidden="true"></div>
-            <div class="hero-overlay" aria-hidden="true"></div>
-
-            <div class="container hero-content">
-
-                <div class="hero-copy">
-
-                    <span class="eyebrow">
-                        Tattoo & Piercing • Consolação • São Paulo
-                    </span>
-
-                    <h1>
-                        Sua ideia ganha forma.
-                        <span>Sua história ganha arte.</span>
-                    </h1>
-
-                    <p>
-                        Tatuagens personalizadas e body piercing realizados com
-                        técnica, cuidado e atenção à sua individualidade, em um
-                        estúdio acolhedor próximo à Rua Augusta e Avenida Paulista.
-                    </p>
-
-                    <div class="hero-actions">
-
-                        <a
-                            href="https://wa.me/5511976892133?text=Olá!%20Gostaria%20de%20pedir%20um%20orçamento%20para%20tattoo%20ou%20piercing."
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="btn btn-primary"
-                        >
-                            Pedir orçamento no WhatsApp
-                        </a>
-
-                        <a href="#galeria" class="btn btn-secondary">
-                            Ver trabalhos
-                        </a>
-
-                    </div>
-
-                    <div class="hero-trust">
-
-                        <div>
-                            <strong>Atendimento personalizado</strong>
-                            <span>Projetos pensados para cada cliente</span>
-                        </div>
-
-                        <div>
-                            <strong>Localização central</strong>
-                            <span>Consolação, São Paulo</span>
-                        </div>
-
-                        <div>
-                            <strong>Horário flexível</strong>
-                            <span>Atendimento mediante agendamento</span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <a href="#sobre" class="scroll-down" aria-label="Ir para próxima seção">
-                <span></span>
+              Pedir orçamento no WhatsApp
             </a>
 
-        </section>
+
+            <a
+              href="#galeria"
+              class="btn btn-secondary"
+            >
+              Ver trabalhos
+            </a>
+
+          </div>
 
 
-        <!-- =====================================================
-             SOBRE
-        ====================================================== -->
-        <section class="section about" id="sobre">
+          <div class="hero-trust">
 
-            <div class="container">
+            <div>
 
-                <div class="section-heading">
-                    <span class="eyebrow">Sobre o estúdio</span>
+              <strong>
+                Atendimento personalizado
+              </strong>
 
-                    <h2>
-                        Técnica, personalidade e cuidado
-                        <span>em cada detalhe.</span>
-                    </h2>
-
-                    <p>
-                        O Augusta Tattoo & Piercing é um espaço criado para quem
-                        busca transformar ideias em trabalhos que façam sentido
-                        para sua história, respeitando anatomia, estilo e
-                        individualidade.
-                    </p>
-                </div>
-
-
-                <div class="about-grid">
-
-                    <div class="about-image">
-                        <img
-                            src="estudio-01.jpg"
-                            alt="Interior do Augusta Tattoo e Piercing"
-                            loading="lazy"
-                        >
-
-                        <div class="image-label">
-                            <span>📍</span>
-                            Consolação • São Paulo
-                        </div>
-                    </div>
-
-
-                    <div class="about-content">
-
-                        <span class="mini-title">
-                            Um espaço para você se sentir à vontade
-                        </span>
-
-                        <h3>
-                            Atendimento próximo do primeiro contato ao pós-procedimento.
-                        </h3>
-
-                        <p>
-                            Cada atendimento começa com conversa. Entendemos sua
-                            ideia, esclarecemos dúvidas e avaliamos o procedimento
-                            para que você possa tomar sua decisão com mais segurança
-                            e tranquilidade.
-                        </p>
-
-                        <p>
-                            O estúdio fica na Rua Itararé, próximo à Rua Augusta,
-                            Shopping Frei Caneca e Avenida Paulista, com acesso
-                            facilitado por transporte público ou carro.
-                        </p>
-
-
-                        <div class="feature-list">
-
-                            <div class="feature">
-                                <div class="feature-icon">01</div>
-                                <div>
-                                    <strong>Atendimento individualizado</strong>
-                                    <span>
-                                        Cada projeto considera estilo, anatomia e preferência.
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="feature">
-                                <div class="feature-icon">02</div>
-                                <div>
-                                    <strong>Biossegurança</strong>
-                                    <span>
-                                        Cuidados adequados durante os procedimentos.
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="feature">
-                                <div class="feature-icon">03</div>
-                                <div>
-                                    <strong>Orientação pós-procedimento</strong>
-                                    <span>
-                                        Informações para auxiliar nos cuidados após o atendimento.
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
+              <span>
+                Projetos pensados para cada cliente
+              </span>
 
             </div>
-        </section>
 
 
-        <!-- =====================================================
-             EQUIPE
-        ====================================================== -->
-        <section class="section team-section">
+            <div>
 
-            <div class="container">
+              <strong>
+                Localização central
+              </strong>
 
-                <div class="section-heading centered">
-                    <span class="eyebrow">Quem cuida de você</span>
-                    <h2>Conheça nossa <span>equipe</span></h2>
-                </div>
-
-
-                <div class="team-grid">
-
-                    <!-- Carol -->
-                    <article class="team-card">
-
-                        <div class="team-image">
-                            <img
-                                src="carol-amaral.jpg"
-                                alt="Carol Amaral, body piercer"
-                                loading="lazy"
-                            >
-                        </div>
-
-                        <div class="team-content">
-
-                            <span class="team-role">Body Piercer</span>
-
-                            <h3>Carol Amaral</h3>
-
-                            <p>
-                                Carol atua como body piercer desde 2019. Na Augusta
-                                Tattoo, une técnica e cuidado em cada procedimento,
-                                priorizando segurança, anatomia e a experiência
-                                individual de cada cliente.
-                            </p>
-
-                            <a
-                                href="https://wa.me/5511976892133?text=Olá!%20Gostaria%20de%20conversar%20sobre%20um%20piercing%20com%20a%20Carol."
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="text-link"
-                            >
-                                Falar sobre piercing →
-                            </a>
-
-                        </div>
-                    </article>
-
-
-                    <!-- Natalia -->
-                    <article class="team-card">
-
-                        <div class="team-image">
-                            <img
-                                src="natalia-mattar.jpg"
-                                alt="Natalia Mattar, tatuadora"
-                                loading="lazy"
-                            >
-                        </div>
-
-                        <div class="team-content">
-
-                            <span class="team-role">Tatuadora</span>
-
-                            <h3>Natalia Mattar</h3>
-
-                            <p>
-                                Tatuadora desde 2018, Natália trabalha com diferentes
-                                estilos, com foco em fine line e realismo. Desenvolve
-                                projetos personalizados de acordo com a ideia e o
-                                estilo de cada cliente.
-                            </p>
-
-                            <a
-                                href="https://wa.me/5511976892133?text=Olá!%20Gostaria%20de%20conversar%20sobre%20uma%20tatuagem%20com%20a%20Natalia."
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="text-link"
-                            >
-                                Falar sobre minha tattoo →
-                            </a>
-
-                        </div>
-                    </article>
-
-                </div>
+              <span>
+                Consolação • São Paulo
+              </span>
 
             </div>
-        </section>
 
 
-        <!-- =====================================================
-             SERVIÇOS
-        ====================================================== -->
-        <section class="section services" id="servicos">
+            <div>
 
-            <div class="container">
+              <strong>
+                Horário flexível
+              </strong>
 
-                <div class="section-heading centered">
-                    <span class="eyebrow">O que fazemos</span>
-
-                    <h2>
-                        Da primeira ideia ao
-                        <span>resultado na pele.</span>
-                    </h2>
-
-                    <p>
-                        Converse com a equipe para avaliar sua ideia e receber
-                        orientações sobre o projeto.
-                    </p>
-                </div>
-
-
-                <div class="services-grid">
-
-                    <article class="service-card">
-
-                        <span class="service-number">01</span>
-
-                        <div class="service-icon">✦</div>
-
-                        <h3>Tatuagem Autoral & Personalizada</h3>
-
-                        <p>
-                            Projetos desenvolvidos de acordo com sua referência,
-                            estilo, região do corpo e proposta visual.
-                        </p>
-
-                        <ul>
-                            <li>Projetos personalizados</li>
-                            <li>Fine line</li>
-                            <li>Realismo</li>
-                            <li>Diferentes estilos</li>
-                        </ul>
-
-                        <a
-                            href="https://wa.me/5511976892133?text=Olá!%20Tenho%20uma%20ideia%20para%20tatuagem%20e%20gostaria%20de%20um%20orçamento."
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Solicitar orçamento →
-                        </a>
-
-                    </article>
-
-
-                    <article class="service-card featured">
-
-                        <span class="service-number">02</span>
-
-                        <span class="service-badge">Piercing</span>
-
-                        <div class="service-icon">◇</div>
-
-                        <h3>Body Piercing</h3>
-
-                        <p>
-                            Perfurações realizadas considerando anatomia,
-                            posicionamento, escolha da joia e cuidados posteriores.
-                        </p>
-
-                        <ul>
-                            <li>Avaliação anatômica</li>
-                            <li>Orientação sobre joias</li>
-                            <li>Perfurações variadas</li>
-                            <li>Orientação pós-procedimento</li>
-                        </ul>
-
-                        <a
-                            href="https://wa.me/5511976892133?text=Olá!%20Gostaria%20de%20informações%20sobre%20body%20piercing."
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Falar com a piercer →
-                        </a>
-
-                    </article>
-
-
-                    <article class="service-card">
-
-                        <span class="service-number">03</span>
-
-                        <div class="service-icon">✧</div>
-
-                        <h3>Reformas & Cover-up</h3>
-
-                        <p>
-                            Avaliação de tatuagens existentes para estudar
-                            possibilidades de renovação, adaptação ou cobertura.
-                        </p>
-
-                        <ul>
-                            <li>Avaliação individual</li>
-                            <li>Estudo da tattoo existente</li>
-                            <li>Planejamento do novo desenho</li>
-                            <li>Projeto personalizado</li>
-                        </ul>
-
-                        <a
-                            href="https://wa.me/5511976892133?text=Olá!%20Gostaria%20de%20avaliar%20uma%20reforma%20ou%20cover-up%20de%20tatuagem."
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Pedir avaliação →
-                        </a>
-
-                    </article>
-
-                </div>
+              <span>
+                Atendimento mediante agendamento
+              </span>
 
             </div>
-        </section>
 
+          </div>
 
-        <!-- =====================================================
-             CTA INTERMEDIÁRIO
-        ====================================================== -->
-        <section class="cta-strip">
+        </div>
 
-            <div class="container cta-strip-content">
+      </div>
 
-                <div>
-                    <span class="eyebrow">Tem uma ideia em mente?</span>
 
-                    <h2>
-                        Conte para a gente o que você quer fazer.
-                    </h2>
-                </div>
+      <a
+        href="#sobre"
+        class="scroll-down"
+        aria-label="Ir para a próxima seção"
+      >
+        <span></span>
+      </a>
 
-                <a
-                    href="https://wa.me/5511976892133?text=Olá!%20Tenho%20uma%20ideia%20e%20gostaria%20de%20conversar%20com%20vocês."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-light"
-                >
-                    Conversar pelo WhatsApp
-                </a>
-
-            </div>
-        </section>
-
-
-        <!-- =====================================================
-             GALERIA
-        ====================================================== -->
-        <section class="section gallery-section" id="galeria">
-
-            <div class="container">
-
-                <div class="section-heading">
-                    <span class="eyebrow">Portfólio</span>
-
-                    <h2>
-                        Trabalhos que falam
-                        <span>por si.</span>
-                    </h2>
-
-                    <p>
-                        Uma seleção de tatuagens, piercings e trabalhos realizados
-                        no Augusta Tattoo & Piercing.
-                    </p>
-                </div>
-
-
-                <div class="gallery-grid">
-
-                    <figure class="gallery-item gallery-large">
-                        <img
-                            src="tattoo-01.jpg"
-                            alt="Tatuagem realizada no Augusta Tattoo"
-                            loading="lazy"
-                        >
-                        <figcaption>
-                            <span>Tattoo</span>
-                            Projeto personalizado
-                        </figcaption>
-                    </figure>
-
-
-                    <figure class="gallery-item">
-                        <img
-                            src="piercing-01.jpg"
-                            alt="Piercing realizado no Augusta Tattoo"
-                            loading="lazy"
-                        >
-                        <figcaption>
-                            <span>Piercing</span>
-                            Composição de joias
-                        </figcaption>
-                    </figure>
-
-
-                    <figure class="gallery-item">
-                        <img
-                            src="tattoo-02.jpg"
-                            alt="Tatuagem realista"
-                            loading="lazy"
-                        >
-                        <figcaption>
-                            <span>Tattoo</span>
-                            Realismo
-                        </figcaption>
-                    </figure>
-
-
-                    <figure class="gallery-item">
-                        <img
-                            src="piercing-02.jpg"
-                            alt="Piercing de orelha"
-                            loading="lazy"
-                        >
-                        <figcaption>
-                            <span>Piercing</span>
-                            Curadoria visual
-                        </figcaption>
-                    </figure>
-
-
-                    <figure class="gallery-item gallery-tall">
-                        <img
-                            src="tattoo-03.jpg"
-                            alt="Tatuagem no braço"
-                            loading="lazy"
-                        >
-                        <figcaption>
-                            <span>Tattoo</span>
-                            Arte em preto e cinza
-                        </figcaption>
-                    </figure>
-
-
-                    <figure class="gallery-item">
-                        <img
-                            src="piercing-03.jpg"
-                            alt="Piercings na orelha"
-                            loading="lazy"
-                        >
-                        <figcaption>
-                            <span>Piercing</span>
-                            Anatomia e composição
-                        </figcaption>
-                    </figure>
-
-
-                    <figure class="gallery-item">
-                        <img
-                            src="tattoo-04.jpg"
-                            alt="Tatuagem de rosa"
-                            loading="lazy"
-                        >
-                        <figcaption>
-                            <span>Tattoo</span>
-                            Blackwork
-                        </figcaption>
-                    </figure>
-
-
-                    <figure class="gallery-item">
-                        <img
-                            src="tattoo-05.jpg"
-                            alt="Tatuagem colorida"
-                            loading="lazy"
-                        >
-                        <figcaption>
-                            <span>Tattoo</span>
-                            Projeto colorido
-                        </figcaption>
-                    </figure>
-
-
-                    <figure class="gallery-item gallery-wide">
-                        <img
-                            src="tattoo-06.jpg"
-                            alt="Tatuagem fechando o braço"
-                            loading="lazy"
-                        >
-                        <figcaption>
-                            <span>Tattoo</span>
-                            Projeto de maior escala
-                        </figcaption>
-                    </figure>
-
-                </div>
-
-
-                <div class="gallery-cta">
-                    <p>
-                        Quer ver mais trabalhos?
-                    </p>
-
-                    <a
-                        href="https://instagram.com/augustatattoo"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn btn-secondary"
-                    >
-                        @augustatattoo no Instagram
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- =====================================================
-             CUIDADOS
-        ====================================================== -->
-        <section class="section care-section" id="cuidados">
-
-            <div class="container">
-
-                <div class="care-wrapper">
-
-                    <div class="section-heading">
-
-                        <span class="eyebrow">
-                            Depois do procedimento
-                        </span>
-
-                        <h2>
-                            O cuidado continua
-                            <span>depois do estúdio.</span>
-                        </h2>
-
-                        <p>
-                            As orientações abaixo são gerais. Cada procedimento pode
-                            exigir cuidados específicos, por isso siga sempre as
-                            recomendações fornecidas durante seu atendimento.
-                        </p>
-
-                    </div>
-
-
-                    <div class="care-box">
-
-                        <div class="tabs" role="tablist">
-
-                            <button
-                                class="tab-button active"
-                                data-tab="tattoo"
-                                type="button"
-                            >
-                                Cuidados com Tattoo
-                            </button>
-
-                            <button
-                                class="tab-button"
-                                data-tab="piercing"
-                                type="button"
-                            >
-                                Cuidados com Piercing
-                            </button>
-
-                        </div>
-
-
-                        <div class="tab-content active" id="tattoo">
-
-                            <div class="care-item">
-                                <span>01</span>
-                                <div>
-                                    <strong>Siga a orientação recebida</strong>
-                                    <p>
-                                        Respeite as recomendações específicas passadas
-                                        pela tatuadora para o seu procedimento.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="care-item">
-                                <span>02</span>
-                                <div>
-                                    <strong>Mantenha a região limpa</strong>
-                                    <p>
-                                        Faça a higienização conforme orientação e
-                                        evite manipular a área sem necessidade.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="care-item">
-                                <span>03</span>
-                                <div>
-                                    <strong>Evite atrito e agressões à pele</strong>
-                                    <p>
-                                        Durante a recuperação, dê atenção especial à
-                                        região tatuada.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="care-item">
-                                <span>04</span>
-                                <div>
-                                    <strong>Entre em contato em caso de dúvidas</strong>
-                                    <p>
-                                        Se algo gerar preocupação, fale com a equipe
-                                        para receber orientação.
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                        <div class="tab-content" id="piercing">
-
-                            <div class="care-item">
-                                <span>01</span>
-                                <div>
-                                    <strong>Evite tocar sem necessidade</strong>
-                                    <p>
-                                        Manipulações frequentes podem interferir no
-                                        processo de recuperação.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="care-item">
-                                <span>02</span>
-                                <div>
-                                    <strong>Faça a higienização recomendada</strong>
-                                    <p>
-                                        Utilize apenas os cuidados indicados durante
-                                        seu atendimento.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="care-item">
-                                <span>03</span>
-                                <div>
-                                    <strong>Não retire ou troque a joia antes da orientação</strong>
-                                    <p>
-                                        O período adequado varia conforme região,
-                                        anatomia e evolução do procedimento.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="care-item">
-                                <span>04</span>
-                                <div>
-                                    <strong>Converse com a piercer</strong>
-                                    <p>
-                                        Surgiram dúvidas durante a recuperação?
-                                        Entre em contato para orientação.
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- =====================================================
-             DEPOIMENTOS
-        ====================================================== -->
-        <section class="section testimonials" id="depoimentos">
-
-            <div class="container">
-
-                <div class="section-heading centered">
-
-                    <span class="eyebrow">
-                        Experiência de quem já passou por aqui
-                    </span>
-
-                    <h2>
-                        Clientes que confiaram
-                        <span>no Augusta.</span>
-                    </h2>
-
-                </div>
-
-
-                <div class="testimonials-grid">
-
-                    <article class="testimonial-card">
-
-                        <div class="stars" aria-label="5 estrelas">
-                            ★★★★★
-                        </div>
-
-                        <p>
-                            “Que maravilha encontrar esse estúdio! Fiz tattoos e um
-                            piercing. Natalia e Carol foram incríveis. Super
-                            pacientes, atenciosas, simpáticas, além de impecáveis no
-                            trabalho e super profissionais. Sem dúvidas, recebem
-                            minha indicação!”
-                        </p>
-
-                        <span>Avaliação de cliente</span>
-
-                    </article>
-
-
-                    <article class="testimonial-card featured-review">
-
-                        <div class="stars" aria-label="5 estrelas">
-                            ★★★★★
-                        </div>
-
-                        <p>
-                            “O melhor Studio da vida, aconchegante, um ambiente que
-                            realmente a gente se sente em casa. Mandam super bem
-                            tanto na tattoo quanto no piercing! Zero arrependimento,
-                            arte profissional e de qualidade! Milhões de estrelas.”
-                        </p>
-
-                        <span>Avaliação de cliente</span>
-
-                    </article>
-
-
-                    <article class="testimonial-card">
-
-                        <div class="stars" aria-label="5 estrelas">
-                            ★★★★★
-                        </div>
-
-                        <p>
-                            “Amei! A profissional é super atenciosa, passa muita
-                            confiança e o ambiente é ótimo. Já saí de lá pensando
-                            nos próximos que vou fazer. Recomendo muito!”
-                        </p>
-
-                        <span>Avaliação de cliente</span>
-
-                    </article>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- =====================================================
-             LOCALIZAÇÃO / CONTATO
-        ====================================================== -->
-        <section class="section contact-section" id="contato">
-
-            <div class="container">
-
-                <div class="contact-grid">
-
-                    <div class="contact-content">
-
-                        <span class="eyebrow">
-                            Fale com a gente
-                        </span>
-
-                        <h2>
-                            Sua próxima tattoo ou piercing
-                            <span>pode começar com uma conversa.</span>
-                        </h2>
-
-                        <p>
-                            Envie sua ideia, referência ou dúvida pelo WhatsApp.
-                            Nossa equipe responde com as informações necessárias
-                            para avaliar seu atendimento.
-                        </p>
-
-
-                        <div class="contact-list">
-
-                            <a
-                                href="https://wa.me/5511976892133"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="contact-item"
-                            >
-                                <span class="contact-icon">↗</span>
-
-                                <div>
-                                    <small>WhatsApp / Telefone</small>
-                                    <strong>(11) 97689-2133</strong>
-                                </div>
-                            </a>
-
-
-                            <a
-                                href="https://instagram.com/augustatattoo"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="contact-item"
-                            >
-                                <span class="contact-icon">@</span>
-
-                                <div>
-                                    <small>Instagram</small>
-                                    <strong>@augustatattoo</strong>
-                                </div>
-                            </a>
-
-
-                            <a
-                                href="https://www.google.com/maps/search/?api=1&query=Rua+Itararé+322+Consolação+São+Paulo"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="contact-item"
-                            >
-                                <span class="contact-icon">⌖</span>
-
-                                <div>
-                                    <small>Endereço</small>
-                                    <strong>
-                                        Rua Itararé, 322 – Sala 4<br>
-                                        Consolação – São Paulo/SP
-                                    </strong>
-                                </div>
-                            </a>
-
-
-                            <div class="contact-item">
-                                <span class="contact-icon">◷</span>
-
-                                <div>
-                                    <small>Funcionamento</small>
-                                    <strong>Aberto 24 horas</strong>
-                                    <span class="small-note">
-                                        Atendimento mediante agendamento.
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                        <a
-                            href="https://wa.me/5511976892133?text=Olá!%20Vim%20pelo%20site%20do%20Augusta%20Tattoo%20e%20gostaria%20de%20agendar%20um%20horário."
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="btn btn-primary"
-                        >
-                            Agendar pelo WhatsApp
-                        </a>
-
-                    </div>
-
-
-                    <div class="contact-image">
-
-                        <img
-                            src="estudio-02.jpg"
-                            alt="Espaço interno do Augusta Tattoo & Piercing"
-                            loading="lazy"
-                        >
-
-                        <div class="location-card">
-
-                            <span>Localização</span>
-
-                            <strong>
-                                No coração da Consolação
-                            </strong>
-
-                            <p>
-                                Próximo à Rua Augusta, Shopping Frei Caneca
-                                e Avenida Paulista.
-                            </p>
-
-                            <a
-                                href="https://www.google.com/maps/search/?api=1&query=Rua+Itararé+322+Consolação+São+Paulo"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                Abrir no mapa →
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- =====================================================
-             CTA FINAL
-        ====================================================== -->
-        <section class="final-cta">
-
-            <div class="final-cta-overlay"></div>
-
-            <div class="container final-cta-content">
-
-                <span class="eyebrow">
-                    Augusta Tattoo & Piercing
-                </span>
-
-                <h2>
-                    Tem uma ideia?
-                    <span>Vamos conversar.</span>
-                </h2>
-
-                <p>
-                    Envie sua referência pelo WhatsApp e fale diretamente
-                    com nossa equipe.
-                </p>
-
-                <a
-                    href="https://wa.me/5511976892133?text=Olá!%20Gostaria%20de%20conversar%20sobre%20uma%20tattoo%20ou%20piercing."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary"
-                >
-                    Chamar no WhatsApp
-                </a>
-
-            </div>
-        </section>
-
-    </main>
+    </section>
 
 
     <!-- =====================================================
-         FOOTER
+         SOBRE
     ====================================================== -->
-    <footer class="footer">
 
-        <div class="container footer-grid">
+    <section class="section about" id="sobre">
 
-            <div class="footer-brand">
+      <div class="container">
 
-                <a href="#inicio" class="logo">
-                    <span class="logo-symbol">A</span>
+        <div class="section-heading">
 
-                    <span class="logo-text">
-                        <strong>Augusta</strong>
-                        <small>Tattoo & Piercing</small>
-                    </span>
-                </a>
+          <span class="eyebrow">
+            Sobre o estúdio
+          </span>
 
-                <p>
-                    Tatuagem e body piercing em São Paulo com atendimento
-                    personalizado e hora marcada.
-                </p>
+          <h2>
+            Um espaço para criar,
+            <span>
+              transformar e se expressar.
+            </span>
+          </h2>
 
-            </div>
-
-
-            <div class="footer-column">
-
-                <strong>Navegação</strong>
-
-                <a href="#sobre">Sobre</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#galeria">Galeria</a>
-                <a href="#cuidados">Cuidados</a>
-                <a href="#contato">Contato</a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <strong>Contato</strong>
-
-                <a href="tel:+5511976892133">
-                    (11) 97689-2133
-                </a>
-
-                <a
-                    href="https://instagram.com/augustatattoo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    @augustatattoo
-                </a>
-
-                <span>
-                    Rua Itararé, 322 – Sala 4<br>
-                    Consolação – São Paulo/SP
-                </span>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <strong>Atendimento</strong>
-
-                <span>Aberto 24 horas</span>
-                <span>Atendimento mediante agendamento</span>
-
-            </div>
+          <p>
+            A Augusta Tattoo & Piercing recebe cada cliente de forma
+            individual, respeitando sua ideia, estilo e anatomia.
+          </p>
 
         </div>
 
 
-        <div class="container footer-bottom">
+        <div class="about-grid">
+
+          <div class="about-image">
+
+            <img
+              src="estudio-01.jpg"
+              alt="Interior do Augusta Tattoo e Piercing"
+              loading="lazy"
+            >
+
+            <div class="image-label">
+              <span>📍</span>
+              Consolação • São Paulo
+            </div>
+
+          </div>
+
+
+          <div class="about-content">
+
+            <span class="mini-title">
+              Experiência, proximidade e cuidado
+            </span>
+
+
+            <h3>
+              Seu atendimento começa com uma boa conversa.
+            </h3>
+
 
             <p>
-                © <span id="currentYear"></span> Augusta Tattoo & Piercing.
-                Todos os direitos reservados.
+              Cada projeto é pensado de acordo com a proposta de quem
+              chega ao estúdio. Antes do procedimento, nossa equipe conversa,
+              tira dúvidas e avalia as possibilidades para que tudo seja
+              feito com atenção e clareza.
             </p>
 
-            <p class="legal">
-                Menores de 18 anos: consulte previamente as condições,
-                documentos e autorizações legais aplicáveis ao procedimento.
+
+            <p>
+              O Augusta Tattoo & Piercing está em uma das regiões mais
+              conhecidas de São Paulo, com fácil acesso pela Rua Augusta,
+              Shopping Frei Caneca e Avenida Paulista.
             </p>
+
+
+            <div class="feature-list">
+
+              <div class="feature">
+
+                <div class="feature-icon">
+                  01
+                </div>
+
+                <div>
+
+                  <strong>
+                    Atendimento individualizado
+                  </strong>
+
+                  <span>
+                    Cada projeto considera anatomia, estilo e preferência.
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="feature">
+
+                <div class="feature-icon">
+                  02
+                </div>
+
+                <div>
+
+                  <strong>
+                    Biossegurança
+                  </strong>
+
+                  <span>
+                    Atenção aos cuidados necessários durante os procedimentos.
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="feature">
+
+                <div class="feature-icon">
+                  03
+                </div>
+
+                <div>
+
+                  <strong>
+                    Orientação pós-procedimento
+                  </strong>
+
+                  <span>
+                    Informações para auxiliar nos cuidados após o atendimento.
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
 
         </div>
 
-    </footer>
+      </div>
+
+    </section>
 
 
     <!-- =====================================================
-         WHATSAPP FLUTUANTE
+         EQUIPE
     ====================================================== -->
-    <a
-        href="https://wa.me/5511976892133?text=Olá!%20Vim%20pelo%20site%20do%20Augusta%20Tattoo."
-        target="_blank"
-        rel="noopener noreferrer"
-        class="whatsapp-float"
-        aria-label="Falar pelo WhatsApp"
-    >
-        <svg viewBox="0 0 32 32" aria-hidden="true">
-            <path
-                fill="currentColor"
-                d="M16.01 3C8.83 3 3 8.67 3 15.66c0 2.46.72 4.85 2.1 6.9L3 29l6.65-2.06A13.3 13.3 0 0 0 16 28.55c7.18 0 13-5.67 13-12.67C29 8.88 23.18 3 16.01 3Zm0 23.4a11 11 0 0 1-5.6-1.53l-.4-.24-3.95 1.22 1.29-3.75-.26-.39a10.18 10.18 0 0 1-1.7-5.63c0-5.62 4.77-10.18 10.63-10.18 5.86 0 10.62 4.56 10.62 10.18 0 5.61-4.76 10.32-10.63 10.32Zm5.83-7.62c-.32-.15-1.89-.9-2.18-1-.29-.1-.5-.15-.72.15-.21.3-.82 1-.99 1.2-.18.2-.37.22-.69.07-.32-.15-1.35-.48-2.57-1.53-.95-.82-1.59-1.83-1.78-2.14-.18-.3-.02-.46.14-.61.14-.13.32-.35.48-.53.16-.17.21-.3.32-.5.11-.2.05-.38-.03-.53-.08-.15-.72-1.68-.98-2.3-.26-.62-.53-.53-.72-.54h-.61c-.21 0-.56.08-.85.38-.29.3-1.11 1.05-1.11 2.56s1.14 2.97 1.3 3.17c.16.2 2.24 3.31 5.42 4.64.76.32 1.35.51 1.81.65.76.23 1.45.2 2 .12.61-.09 1.89-.75 2.16-1.47.26-.73.26-1.35.18-1.48-.08-.13-.29-.2-.61-.35Z"
-            />
-        </svg>
 
-        <span>WhatsApp</span>
-    </a>
+    <section class="section team-section" id="equipe">
+
+      <div class="container">
+
+        <div class="section-heading centered">
+
+          <span class="eyebrow">
+            Quem cuida de você
+          </span>
+
+          <h2>
+            Conheça nossa
+            <span>equipe</span>
+          </h2>
+
+          <p>
+            Profissionais que unem experiência, técnica e atenção aos detalhes.
+          </p>
+
+        </div>
 
 
-    <script src="script.js"></script>
+        <div class="team-grid">
+
+
+          <article class="team-card">
+
+            <div class="team-image">
+
+              <img
+                src="carol-amaral.jpg"
+                alt="Carol Amaral, Body Piercer"
+                loading="lazy"
+              >
+
+            </div>
+
+
+            <div class="team-content">
+
+              <span class="team-role">
+                Body Piercer
+              </span>
+
+              <h3>
+                Carol Amaral
+              </h3>
+
+              <p>
+                Carol atua como body piercer desde 2019 — são mais de
+                6 anos de experiência na área. Na Augusta Tattoo, une
+                técnica e cuidado em cada procedimento, priorizando
+                segurança, anatomia e a experiência de cada cliente.
+              </p>
+
+              <a
+                href="https://wa.me/5511976892133?text=Olá!%20Gostaria%20de%20conversar%20sobre%20um%20piercing%20com%20a%20Carol."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-link"
+              >
+                Falar sobre piercing →
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <article class="team-card">
+
+            <div class="team-image">
+
+              <img
+                src="natalia-mattar.jpg"
+                alt="Natalia Mattar, tatuadora"
+                loading="lazy"
+              >
+
+            </div>
+
+
+            <div class="team-content">
+
+              <span class="team-role">
+                Tatuadora
+              </span>
+
+              <h3>
+                Natalia Mattar
+              </h3>
+
+              <p>
+                Tatuadora desde 2018, Natália tem experiência com diversos
+                estilos, com foco em fine line e realismo. Versátil e
+                detalhista, realiza projetos personalizados de acordo com
+                o estilo e a ideia de cada cliente, sempre prezando por
+                qualidade e conforto durante o processo.
+              </p>
+
+              <a
+                href="https://wa.me/5511976892133?text=Olá!%20Gostaria%20de%20conversar%20sobre%20uma%20tatuagem%20com%20a%20Natalia."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-link"
+              >
+                Falar sobre minha tattoo →
+              </a>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SERVIÇOS
+    ====================================================== -->
+
+    <section class="section services" id="servicos">
+
+      <div class="container">
+
+        <div class="section-heading centered">
+
+          <span class="eyebrow">
+            Serviços
+          </span>
+
+          <h2>
+            Sua ideia,
+            <span>
+              do conceito à pele.
+            </span>
+          </h2>
+
+          <p>
+            Converse com nossa equipe para avaliar sua ideia e entender
+            qual caminho faz mais sentido para o seu projeto.
+          </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+
+          <article class="service-card">
+
+            <span class="service-number">
+              01
+            </span>
+
+            <div class="service-icon">
+              ✦
+            </div>
+
+            <h3>
+              Tatuagem Autoral & Exclusiva
+            </h3>
+
+            <p>
+              Projetos desenvolvidos de acordo com sua referência,
+              estilo, região do corpo e proposta visual.
+            </p>
+
+            <ul>
+              <li>Projetos personalizados</li>
+              <li>Fine line</li>
+              <li>Realismo</li>
+              <li>Blackwork</li>
+              <li>Diferentes estilos</li>
+            </ul>
+
+            <a
+              href="https://wa.me/5511976892133?text=Olá!%20Tenho%20uma%20ideia%20para%20tatuagem%20e%20gostaria%20de%20um%20orçamento."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Solicitar orçamento →
+            </a>
+
+          </article>
+
+
+          <article class="service-card featured">
+
+            <span class="service-number">
+              02
+            </span>
+
+            <span class="service-badge">
+              Piercing
+            </span>
+
+            <div class="service-icon">
+              ◇
+            </div>
+
+            <h3>
+              Body Piercing
+            </h3>
+
+            <p>
+              Perfurações realizadas considerando anatomia,
+              posicionamento, escolha da joia e cuidados posteriores.
+            </p>
+
+            <ul>
+              <li>Avaliação anatômica</li>
+              <li>Orientação sobre joias</li>
+              <li>Joias em titânio</li>
+              <li>Curadoria de composição</li>
+              <li>Orientação pós-procedimento</li>
+            </ul>
+
+            <a
+              href="https://wa.me/5511976892133?text=Olá!%20Gostaria%20de%20informações%20sobre%20body%20piercing."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Falar com a piercer →
+            </a>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <span class="service-number">
+              03
+            </span>
+
+            <div class="service-icon">
+              ✧
+            </div>
+
+            <h3>
+              Reformas & Cover-up
+            </h3>
+
+            <p>
+              Avaliação de tatuagens existentes para estudar
+              possibilidades de renovação, adaptação ou cobertura.
+            </p>
+
+            <ul>
+              <li>Avaliação individual</li>
+              <li>Análise da tattoo existente</li>
+              <li>Planejamento do novo desenho</li>
+              <li>Projeto personalizado</li>
+            </ul>
+
+            <a
+              href="https://wa.me/5511976892133?text=Olá!%20Gostaria%20de%20avaliar%20uma%20reforma%20ou%20cover-up%20de%20tatuagem."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Pedir avaliação →
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="cta-strip">
+
+      <div class="container cta-strip-content">
+
+        <div>
+
+          <span class="eyebrow">
+            Tem uma ideia em mente?
+          </span>
+
+          <h2>
+            Mande sua referência e converse com nossa equipe.
+          </h2>
+
+        </div>
+
+
+        <a
+          href="https://wa.me/5511976892133?text=Olá!%20Tenho%20uma%20ideia%20e%20gostaria%20de%20conversar%20com%20vocês."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-light"
+        >
+          Conversar pelo WhatsApp
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         GALERIA
+    ====================================================== -->
+
+    <section class="section gallery-section" id="galeria">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <span class="eyebrow">
+            Portfólio
+          </span>
+
+          <h2>
+            Arte, técnica e
+            <span>personalidade.</span>
+          </h2>
+
+          <p>
+            Alguns dos trabalhos realizados no Augusta Tattoo & Piercing.
+          </p>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+
+          <figure class="gallery-item gallery-large">
+
+            <img
+              src="tattoo-01.jpg"
+              alt="Tatuagem realizada no Augusta Tattoo"
+              loading="lazy"
+            >
+
+            <figcaption>
+              <span>Tattoo</span>
+              Projeto personalizado
+            </figcaption>
+
+          </figure>
+
+
+          <figure class="gallery-item">
+
+            <img
+              src="piercing-01.jpg"
+              alt="Piercing realizado no Augusta Tattoo"
+              loading="lazy"
+            >
+
+            <figcaption>
+              <span>Piercing</span>
+              Composição de joias
+            </figcaption>
+
+          </figure>
+
+
+          <figure class="gallery-item">
+
+            <img
+              src="tattoo-02.jpg"
+              alt="Tatuagem realista"
+              loading="lazy"
+            >
+
+            <figcaption>
+              <span>Tattoo</span>
+              Realismo
+            </figcaption>
+
+          </figure>
+
+
+          <figure class="gallery-item">
+
+            <img
+              src="piercing-02.jpg"
+              alt="Piercing de orelha"
+              loading="lazy"
+            >
+
+            <figcaption>
+              <span>Piercing</span>
+              Curadoria visual
+            </figcaption>
+
+          </figure>
+
+
+          <figure class="gallery-item gallery-tall">
+
+            <img
+              src="tattoo-03.jpg"
+              alt="Tatuagem no braço"
+              loading="lazy"
+            >
+
+            <figcaption>
+              <span>Tattoo</span>
+              Preto e cinza
+            </figcaption>
+
+          </figure>
+
+
+          <figure class="gallery-item">
+
+            <img
+              src="piercing-03.jpg"
+              alt="Piercings na orelha"
+              loading="lazy"
+            >
+
+            <figcaption>
+              <span>Piercing</span>
+              Anatomia e composição
+            </figcaption>
+
+          </figure>
+
+
+          <figure class="gallery-item">
+
+            <img
+              src="tattoo-04.jpg"
+              alt="Tatuagem de rosa"
+              loading="lazy"
+            >
+
+            <figcaption>
+              <span>Tattoo</span>
+              Blackwork
+            </figcaption>
+
+          </figure>
+
+
+          <figure class="gallery-item">
+
+            <img
+              src="tattoo-05.jpg"
+              alt="Tatuagem colorida"
+              loading="lazy"
+            >
+
+            <figcaption>
+              <span>Tattoo</span>
+              Projeto colorido
+            </figcaption>
+
+          </figure>
+
+
+          <figure class="gallery-item gallery-wide">
+
+            <img
+              src="tattoo-06.jpg"
+              alt="Tatuagem de braço"
+              loading="lazy"
+            >
+
+            <figcaption>
+              <span>Tattoo</span>
+              Projeto de maior escala
+            </figcaption>
+
+          </figure>
+
+        </div>
+
+
+        <div class="gallery-cta">
+
+          <p>
+            Quer ver mais trabalhos?
+          </p>
+
+          <a
+            href="https://instagram.com/augustatattoo"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            Ver @augustatattoo
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CUIDADOS
+    ====================================================== -->
+
+    <section class="section care-section" id="cuidados">
+
+      <div class="container">
+
+        <div class="care-wrapper">
+
+          <div class="section-heading">
+
+            <span class="eyebrow">
+              Pós-procedimento
+            </span>
+
+            <h2>
+              O cuidado continua
+              <span>depois do estúdio.</span>
+            </h2>
+
+            <p>
+              Cada procedimento pode exigir orientações específicas.
+              Sempre siga as recomendações fornecidas pela profissional
+              responsável pelo atendimento.
+            </p>
+
+          </div>
+
+
+          <div class="care-box">
+
+            <div class="tabs">
+
+              <button
+                class="tab-button active"
+                data-tab="tattoo"
+                type="button"
+              >
+                Cuidados com Tattoo
+              </button>
+
+              <button
+                class="tab-button"
+                data-tab="piercing"
+                type="button"
+              >
+                Cuidados com Piercing
+              </button>
+
+            </div>
+
+
+            <div class="tab-content active" id="tattoo">
+
+              <div class="care-item">
+
+                <span>01</span>
+
+                <div>
+
+                  <strong>
+                    Siga a orientação recebida
+                  </strong>
+
+                  <p>
+                    Respeite as recomendações específicas passadas
+                    pela tatuadora.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="care-item">
+
+                <span>02</span>
+
+                <div>
+
+                  <strong>
+                    Mantenha a região limpa
+                  </strong>
+
+                  <p>
+                    Faça a higienização conforme orientação e evite
+                    manipular a área sem necessidade.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="care-item">
+
+                <span>03</span>
+
+                <div>
+
+                  <strong>
+                    Evite atrito
+                  </strong>
+
+                  <p>
+                    Dê atenção especial à região durante a recuperação.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="care-item">
+
+                <span>04</span>
+
+                <div>
+
+                  <strong>
+                    Entre em contato em caso de dúvidas
+                  </strong>
+
+                  <p>
+                    Se algo gerar preocupação, converse com a equipe.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="tab-content" id="piercing">
+
+              <div class="care-item">
+
+                <span>01</span>
+
+                <div>
+
+                  <strong>
+                    Evite tocar sem necessidade
+                  </strong>
+
+                  <p>
+                    Manipulações frequentes podem interferir na recuperação.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="care-item">
+
+                <span>02</span>
+
+                <div>
+
+                  <strong>
+                    Faça a higienização recomendada
+                  </strong>
+
+                  <p>
+                    Utilize apenas os cuidados indicados durante
+                    seu atendimento.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="care-item">
+
+                <span>03</span>
+
+                <div>
+
+                  <strong>
+                    Não troque a joia antes da orientação
+                  </strong>
+
+                  <p>
+                    O período pode variar conforme região, anatomia
+                    e evolução do procedimento.
+                  </p>
+
+                </div>
+
+              </div>
+
+
+              <div class="care-item">
+
+                <span>04</span>
+
+                <div>
+
+                  <strong>
+                    Converse com a piercer
+                  </strong>
+
+                  <p>
+                    Surgiram dúvidas? Entre em contato com a equipe.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DEPOIMENTOS
+    ====================================================== -->
+
+    <section class="section testimonials" id="depoimentos">
+
+      <div class="container">
+
+        <div class="section-heading centered">
+
+          <span class="eyebrow">
+            Experiência de quem já veio
+          </span>
+
+          <h2>
+            O que nossos clientes
+            <span>contam.</span>
+          </h2>
+
+        </div>
+
+
+        <div class="testimonials-grid">
+
+
+          <article class="testimonial-card">
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <p>
+              “Que maravilha encontrar esse estúdio! Fiz tattoos e um
+              piercing. Natalia e Carol foram incríveis. Super pacientes,
+              atenciosas, simpáticas, além de impecáveis no trabalho e
+              super profissionais. Sem dúvidas, recebem minha indicação!”
+            </p>
+
+            <span>
+              Avaliação de cliente
+            </span>
+
+          </article>
+
+
+          <article class="testimonial-card featured-review">
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <p>
+              “O melhor Studio da vida, aconchegante, um ambiente que
+              realmente a gente se sente em casa. Mandam super bem tanto
+              na tattoo quanto no piercing! Zero arrependimento, arte
+              profissional e de qualidade! Milhões de estrelas.”
+            </p>
+
+            <span>
+              Avaliação de cliente
+            </span>
+
+          </article>
+
+
+          <article class="testimonial-card">
+
+            <div class="stars">
+              ★★★★★
+            </div>
+
+            <p>
+              “Amei! A profissional é super atenciosa, passa muita confiança
+              e o ambiente é ótimo. Já saí de lá pensando nos próximos
+              que vou fazer. Recomendo muito!”
+            </p>
+
+            <span>
+              Avaliação de cliente
+            </span>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONTATO
+    ====================================================== -->
+
+    <section class="section contact-section" id="contato">
+
+      <div class="container">
+
+        <div class="contact-grid">
+
+          <div class="contact-content">
+
+            <span class="eyebrow">
+              Fale com a gente
+            </span>
+
+            <h2>
+              Sua próxima tattoo ou piercing
+              <span>
+                pode começar com uma conversa.
+              </span>
+            </h2>
+
+            <p>
+              Entre em contato para orçamentos, dúvidas ou para marcar
+              seu horário. Atendemos com horário flexível, mediante
+              agendamento.
+            </p>
+
+
+            <div class="contact-list">
+
+
+              <a
+                href="https://wa.me/5511976892133"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-item"
+              >
+
+                <span class="contact-icon">
+                  ↗
+                </span>
+
+                <div>
+
+                  <small>
+                    WhatsApp / Telefone
+                  </small>
+
+                  <strong>
+                    (11) 97689-2133
+                  </strong>
+
+                </div>
+
+              </a>
+
+
+              <a
+                href="https://instagram.com/augustatattoo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-item"
+              >
+
+                <span class="contact-icon">
+                  @
+                </span>
+
+                <div>
+
+                  <small>
+                    Instagram
+                  </small>
+
+                  <strong>
+                    @augustatattoo
+                  </strong>
+
+                </div>
+
+              </a>
+
+
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Rua+Itararé+322+Sala+4+Consolação+São+Paulo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-item"
+              >
+
+                <span class="contact-icon">
+                  ⌖
+                </span>
+
+                <div>
+
+                  <small>
+                    Endereço
+                  </small>
+
+                  <strong>
+                    Rua Itararé, 322 – Sala 4<br>
+                    Consolação – São Paulo/SP
+                  </strong>
+
+                </div>
+
+              </a>
+
+
+              <div class="contact-item">
+
+                <span class="contact-icon">
+                  ◷
+                </span>
+
+                <div>
+
+                  <small>
+                    Funcionamento
+                  </small>
+
+                  <strong>
+                    Aberto 24 horas
+                  </strong>
+
+                  <span class="small-note">
+                    Atendimento mediante agendamento.
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <a
+              href="https://wa.me/5511976892133?text=Olá!%20Vim%20pelo%20site%20da%20Augusta%20Tattoo%20e%20gostaria%20de%20agendar%20um%20horário."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-primary"
+            >
+              Agendar pelo WhatsApp
+            </a>
+
+          </div>
+
+
+          <div class="contact-image">
+
+            <img
+              src="estudio-02.jpg"
+              alt="Espaço interno do Augusta Tattoo e Piercing"
+              loading="lazy"
+            >
+
+
+            <div class="location-card">
+
+              <span>
+                Localização
+              </span>
+
+              <strong>
+                No coração da Consolação
+              </strong>
+
+              <p>
+                Próximo à Rua Augusta, Shopping Frei Caneca e Avenida Paulista.
+              </p>
+
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Rua+Itararé+322+Sala+4+Consolação+São+Paulo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Abrir no mapa →
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA FINAL
+    ====================================================== -->
+
+    <section class="final-cta">
+
+      <div class="final-cta-overlay"></div>
+
+
+      <div class="container final-cta-content">
+
+        <span class="eyebrow">
+          Augusta Tattoo & Piercing
+        </span>
+
+
+        <h2>
+          Tem uma ideia?
+          <span>
+            Vamos conversar.
+          </span>
+        </h2>
+
+
+        <p>
+          Envie sua referência pelo WhatsApp e fale diretamente
+          com nossa equipe.
+        </p>
+
+
+        <a
+          href="https://wa.me/5511976892133?text=Olá!%20Gostaria%20de%20conversar%20sobre%20uma%20tattoo%20ou%20piercing."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
+          Chamar no WhatsApp
+        </a>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="footer">
+
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+
+        <a href="#inicio" class="logo">
+
+          <span class="logo-symbol">
+            A
+          </span>
+
+          <span class="logo-text">
+            <strong>Augusta</strong>
+            <small>Tattoo & Piercing</small>
+          </span>
+
+        </a>
+
+
+        <p>
+          Tatuagem e body piercing em São Paulo com atendimento
+          personalizado e hora marcada.
+        </p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <strong>
+          Navegação
+        </strong>
+
+        <a href="#sobre">Sobre</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#cuidados">Cuidados</a>
+        <a href="#contato">Contato</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <strong>
+          Contato
+        </strong>
+
+        <a href="tel:+5511976892133">
+          (11) 97689-2133
+        </a>
+
+        <a
+          href="https://instagram.com/augustatattoo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @augustatattoo
+        </a>
+
+        <span>
+          Rua Itararé, 322 – Sala 4<br>
+          Consolação – São Paulo/SP
+        </span>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <strong>
+          Atendimento
+        </strong>
+
+        <span>
+          Aberto 24 horas
+        </span>
+
+        <span>
+          Atendimento mediante agendamento
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <p>
+        © <span id="currentYear"></span>
+        Augusta Tattoo & Piercing.
+        Todos os direitos reservados.
+      </p>
+
+      <p class="legal">
+        Menores de 18 anos: consulte previamente as condições,
+        documentos e autorizações legais aplicáveis ao procedimento.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       WHATSAPP FLUTUANTE
+  ====================================================== -->
+
+  <a
+    href="https://wa.me/5511976892133?text=Olá!%20Vim%20pelo%20site%20da%20Augusta%20Tattoo."
+    target="_blank"
+    rel="noopener noreferrer"
+    class="whatsapp-float"
+    aria-label="Falar pelo WhatsApp"
+  >
+
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+
+      <path
+        fill="currentColor"
+        d="M16.01 3C8.83 3 3 8.67 3 15.66c0 2.46.72 4.85 2.1 6.9L3 29l6.65-2.06A13.3 13.3 0 0 0 16 28.55c7.18 0 13-5.67 13-12.67C29 8.88 23.18 3 16.01 3Zm0 23.4a11 11 0 0 1-5.6-1.53l-.4-.24-3.95 1.22 1.29-3.75-.26-.39a10.18 10.18 0 0 1-1.7-5.63c0-5.62 4.77-10.18 10.63-10.18 5.86 0 10.62 4.56 10.62 10.18 0 5.61-4.76 10.32-10.63 10.32Zm5.83-7.62c-.32-.15-1.89-.9-2.18-1-.29-.1-.5-.15-.72.15-.21.3-.82 1-.99 1.2-.18.2-.37.22-.69.07-.32-.15-1.35-.48-2.57-1.53-.95-.82-1.59-1.83-1.78-2.14-.18-.3-.02-.46.14-.61.14-.13.32-.35.48-.53.16-.17.21-.3.32-.5.11-.2.05-.38-.03-.53-.08-.15-.72-1.68-.98-2.3-.26-.62-.53-.53-.72-.54h-.61c-.21 0-.56.08-.85.38-.29.3-1.11 1.05-1.11 2.56s1.14 2.97 1.3 3.17c.16.2 2.24 3.31 5.42 4.64.76.32 1.35.51 1.81.65.76.23 1.45.2 2 .12.61-.09 1.89-.75 2.16-1.47.26-.73.26-1.35.18-1.48-.08-.13-.29-.2-.61-.35Z"
+      />
+
+    </svg>
+
+
+    <span>
+      WhatsApp
+    </span>
+
+  </a>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+      const header =
+        document.getElementById("header");
+
+      const nav =
+        document.getElementById("nav");
+
+      const menuToggle =
+        document.getElementById("menuToggle");
+
+      const navLinks =
+        document.querySelectorAll(".nav-link");
+
+      const internalLinks =
+        document.querySelectorAll('a[href^="#"]');
+
+      const tabButtons =
+        document.querySelectorAll(".tab-button");
+
+      const tabContents =
+        document.querySelectorAll(".tab-content");
+
+      const sections =
+        document.querySelectorAll("section[id]");
+
+      const currentYear =
+        document.getElementById("currentYear");
+
+
+      /* ANO AUTOMÁTICO */
+
+      if (currentYear) {
+        currentYear.textContent =
+          new Date().getFullYear();
+      }
+
+
+      /* MENU MOBILE */
+
+      function openMenu() {
+
+        nav.classList.add("open");
+
+        menuToggle.classList.add("active");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "true"
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          "Fechar menu"
+        );
+
+        document.body.classList.add(
+          "menu-open"
+        );
+
+      }
+
+
+      function closeMenu() {
+
+        nav.classList.remove("open");
+
+        menuToggle.classList.remove("active");
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          "Abrir menu"
+        );
+
+        document.body.classList.remove(
+          "menu-open"
+        );
+
+      }
+
+
+      menuToggle.addEventListener(
+        "click",
+        () => {
+
+          const isOpen =
+            nav.classList.contains("open");
+
+          if (isOpen) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+
+        }
+      );
+
+
+      /* SMOOTH SCROLL */
+
+      internalLinks.forEach((link) => {
+
+        link.addEventListener(
+          "click",
+          (event) => {
+
+            const targetId =
+              link.getAttribute("href");
+
+            if (
+              !targetId ||
+              targetId === "#"
+            ) {
+              return;
+            }
+
+            const target =
+              document.querySelector(targetId);
+
+            if (!target) {
+              return;
+            }
+
+            event.preventDefault();
+
+            const headerHeight =
+              header.offsetHeight;
+
+            const targetPosition =
+              target.getBoundingClientRect().top +
+              window.scrollY -
+              headerHeight +
+              1;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth"
+            });
+
+            closeMenu();
+
+          }
+        );
+
+      });
+
+
+      /* HEADER AO ROLAR */
+
+      function updateHeader() {
+
+        if (window.scrollY > 30) {
+
+          header.classList.add(
+            "scrolled"
+          );
+
+        } else {
+
+          header.classList.remove(
+            "scrolled"
+          );
+
+        }
+
+      }
+
+
+      updateHeader();
+
+
+      window.addEventListener(
+        "scroll",
+        updateHeader
+      );
+
+
+      /* LINK ATIVO */
+
+      function updateActiveLink() {
+
+        const scrollPosition =
+          window.scrollY +
+          header.offsetHeight +
+          120;
+
+
+        sections.forEach((section) => {
+
+          const sectionTop =
+            section.offsetTop;
+
+          const sectionHeight =
+            section.offsetHeight;
+
+          const sectionId =
+            section.getAttribute("id");
+
+
+          if (
+            scrollPosition >= sectionTop &&
+            scrollPosition <
+            sectionTop + sectionHeight
+          ) {
+
+            navLinks.forEach((link) => {
+
+              link.classList.remove(
+                "active"
+              );
+
+
+              if (
+                link.getAttribute("href") ===
+                `#${sectionId}`
+              ) {
+
+                link.classList.add(
+                  "active"
+                );
+
+              }
+
+            });
+
+          }
+
+        });
+
+      }
+
+
+      window.addEventListener(
+        "scroll",
+        updateActiveLink
+      );
+
+
+      /* ABAS DE CUIDADOS */
+
+      tabButtons.forEach((button) => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const targetId =
+              button.dataset.tab;
+
+
+            tabButtons.forEach((item) => {
+
+              item.classList.remove(
+                "active"
+              );
+
+            });
+
+
+            tabContents.forEach((content) => {
+
+              content.classList.remove(
+                "active"
+              );
+
+            });
+
+
+            button.classList.add(
+              "active"
+            );
+
+
+            const targetContent =
+              document.getElementById(targetId);
+
+
+            if (targetContent) {
+
+              targetContent.classList.add(
+                "active"
+              );
+
+            }
+
+          }
+        );
+
+      });
+
+
+      /* ESC FECHA MENU */
+
+      document.addEventListener(
+        "keydown",
+        (event) => {
+
+          if (
+            event.key === "Escape" &&
+            nav.classList.contains("open")
+          ) {
+
+            closeMenu();
+
+          }
+
+        }
+      );
+
+
+      /* FECHAR MENU AO VOLTAR PARA DESKTOP */
+
+      window.addEventListener(
+        "resize",
+        () => {
+
+          if (window.innerWidth > 1050) {
+
+            closeMenu();
+
+          }
+
+        }
+      );
+
+    });
+
+  </script>
 
 </body>
 </html>
